@@ -1,0 +1,7 @@
+telegram.bot:
+  token: 1869011562:AAGTy1hnkUEuT-VvhVjgx-C1YuOSI0Cv8cQ
+  username: cryptoKosh_bot
+
+server.port: 8082
+
+currencyListener.url: http://localhost:8081/
