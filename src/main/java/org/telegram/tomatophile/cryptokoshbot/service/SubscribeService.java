@@ -2,8 +2,10 @@ package org.telegram.tomatophile.cryptokoshbot.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.telegram.tomatophile.cryptokoshbot.pojo.Event;
 import org.telegram.tomatophile.cryptokoshbot.pojo.Subscribe;
 
 @Service
@@ -16,6 +18,8 @@ public class SubscribeService {
     private String unsubscribeUpdateUrl;
     @Value("${currencyListener.subscribeFallUrl}")
     private String subscribeFallUrl;
+    @Value("${currencyListener.getOneUrl}")
+    private String getOneUrl;
 
     private final RestTemplate restTemplate;
 
@@ -45,5 +49,11 @@ public class SubscribeService {
         var subscribe = Subscribe.builder().chatId(chatId).figi(figi).fallPercent(fallPercent).build();
 
         restTemplate.postForObject(url, subscribe, Subscribe.class);
+    }
+
+    public ResponseEntity<Event> getOne(String figi){
+        var url = currencyListenerUrl.concat(getOneUrl).concat(figi);
+
+        return restTemplate.getForEntity(url, Event.class);
     }
 }

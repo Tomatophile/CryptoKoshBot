@@ -5,6 +5,7 @@ currencyListener:
   subscribeUpdateUrl: subscribe/update
   unsubscribeUpdateUrl: unsubscribe/update
   subscribeFallUrl: subscribe/fall
+  getOneUrl: /get?figi=
 
 
 
@@ -23,6 +24,7 @@ telegram.bot:
       subscribeUpdate: /subscribeUpdate
       unsubscribeUpdate: /unsubscribeUpdate
     text:
+      iWantGetOne: Хочу узнать текущий курс!
       iWantToSubscribeOnFall: Хочу узнать, когда курс упадёт!
       iWantToSubscribeOnUpdate: Хочу подписатьться на поток обновления курса!
       iWantToUnsubscribeOnUpdate: Хочу отписаться от потока!
@@ -32,7 +34,7 @@ telegram.bot:
       Привет, %s!
       Меня зовут cryptoKosh_bot.
       Я бот, который помогает тем, кто хочет знать самую актуальную информацию о курсе криптовалют.
-      Здесь можно оформить подписку на обновления их курса.
+      Здесь можно узнать курсы криптовалют, а также оформить подписку на обновления их курса.
 
     unknownCommand: Прости, я не понимаю тебя, у меня лапки. Пожалуйста воспользуйся командами, которые я уже выучил.
 
@@ -80,6 +82,13 @@ telegram.bot:
       Эх...
       Больше тебе не будут приходить сообщения с курсом %s.
       Рад был помочь.
+
+    guideGetOne: |
+      Тогда отправь мне команду:
+      /update <код валюты>
+
+      например:
+      /update BTC
 
     updateEvent: Стоимость %s составляет $%s
     fallEvent: Стоимость %s упала, и теперь составляет $%s
