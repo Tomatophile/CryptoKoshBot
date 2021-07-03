@@ -45,14 +45,13 @@ public class UpdateCommand implements Command {
             return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
 
-        var response = subscribeService.getOne(figi);
-
-        if(response.getStatusCode().is2xxSuccessful()){
+        try {
+            var response = subscribeService.getOne(figi);
             var price = response.getBody().getPrice();
 
             return List.of(replyService.getTextMessage(chatId, String.format(updateEvent, figi, price)));
+        } catch (Exception e){
+            return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
-
-        return List.of(replyService.getTextMessage(chatId, unknownCurrency));
     }
 }
