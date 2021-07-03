@@ -5,11 +5,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.tomatophile.bottemplate.keyboard.ReplyKeyboardMarkupBuilder;
 import org.telegram.tomatophile.bottemplate.processed.command.Command;
 import org.telegram.tomatophile.bottemplate.processed.text.Text;
+import org.telegram.tomatophile.cryptokoshbot.service.ReplyService;
 
 import java.util.List;
 
@@ -25,6 +27,10 @@ public class StartCommand implements Command {
 
     private final List<Text> texts;
 
+    private final InputFile image;
+
+    private final ReplyService replyService;
+
     @Override
     public List<PartialBotApiMethod<Message>> process(Update update) {
         var keyboard = ReplyKeyboardMarkupBuilder.create(update.getMessage().getChatId().toString());
@@ -39,6 +45,6 @@ public class StartCommand implements Command {
             keyboard.nextRow();
         }
 
-        return List.of(keyboard.build());
+        return List.of(keyboard.build(), replyService.getPhotoMessage(update.getMessage().getChatId().toString(), image));
     }
 }
