@@ -2,6 +2,7 @@ package org.telegram.tomatophile.cryptokoshbot.bot.processed.command;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -16,7 +17,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StartCommand implements Command {
     @Getter
-    private final String command = "/start";
+    @Value("${telegram.bot.processed.command.start}")
+    private String command;
+
+    @Value("${telegram.bot.blank.hello}")
+    private String hello;
 
     private final List<Text> texts;
 
@@ -24,10 +29,7 @@ public class StartCommand implements Command {
     public List<PartialBotApiMethod<Message>> process(Update update) {
         var keyboard = ReplyKeyboardMarkupBuilder.create(update.getMessage().getChatId().toString());
 
-        keyboard.setText("Привет, "+update.getMessage().getChat().getFirstName()+ "!\n" +
-                "Меня зовут cryptoKosh_bot." +
-                " Я бот, который помогает тем, кто хочет знать самую актуальную информацию о курсе криптовалют." +
-                " Здесь можно оформить подписку на обновления их курса.");
+        keyboard.setText(String.format(hello, update.getMessage().getChat().getFirstName()));
 
         for (var i = 0; i < texts.size(); i++) {
             keyboard.addButton(texts.get(i).getText());

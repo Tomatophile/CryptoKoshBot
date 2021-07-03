@@ -2,6 +2,7 @@ package org.telegram.tomatophile.cryptokoshbot.bot.processed.text;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -15,12 +16,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IWantToSubscribeOnFallText implements Text {
     @Getter
-    private final String text = "Хочу подписаться на падение курса криптовалюты.";
+    @Value("${telegram.bot.processed.text.iWantToSubscribeOnFall}")
+    private String text;
+
+    @Value("${telegram.bot.blank.guideSubscribeFall}")
+    private String guideSubscribeFall;
 
     private final ReplyService replyService;
 
     @Override
     public List<PartialBotApiMethod<Message>> process(Update update) {
-        return List.of(replyService.getTextMessage(update.getMessage().getChatId().toString(), "Для этого напиши мне команду : /subscribeFall <FIGI валюты> <процент падения>"));
+        return List.of(replyService.getTextMessage(update.getMessage().getChatId().toString(), guideSubscribeFall));
     }
 }
