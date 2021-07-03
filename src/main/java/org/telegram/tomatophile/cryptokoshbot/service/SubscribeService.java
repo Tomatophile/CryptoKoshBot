@@ -35,12 +35,12 @@ public class SubscribeService {
         restTemplate.postForObject(url, subscribe, Subscribe.class);
     }
 
-    public void unsubscribeOnUpdateCurrency(String chatId, String figi) {
+    public ResponseEntity<Subscribe> unsubscribeOnUpdateCurrency(String chatId, String figi) {
         var url = currencyListenerUrl.concat(unsubscribeUpdateUrl);
 
         var subscribe = Subscribe.builder().chatId(chatId).figi(figi).build();
 
-        restTemplate.postForObject(url, subscribe, Subscribe.class);
+        return restTemplate.postForEntity(url, subscribe, Subscribe.class);
     }
 
     public void subscribeOnFallCurrency(String chatId, String figi, int fallPercent) {
