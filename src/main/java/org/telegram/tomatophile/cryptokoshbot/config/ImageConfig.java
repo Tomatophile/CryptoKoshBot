@@ -8,7 +8,7 @@ import java.io.File;
 @Configuration
 public class ImageConfig {
     @Bean
-    public InputFile images(){
+    public InputFile image(){
         var path = getClass().getClassLoader().getResource("img/2.jpg").getPath();
         return new InputFile(new File(path));
     }

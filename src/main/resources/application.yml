@@ -1,7 +1,9 @@
 server.port: ${PORT}
+#server.port: 8082
 
 currencyListener:
   baseUrl: ${CURRENCY_LISTENER_BASE_URL}
+#  baseUrl: https://curryncy-listener.herokuapp.com/
   subscribeUpdateUrl: subscribe/update
   unsubscribeUpdateUrl: unsubscribe/update
   subscribeFallUrl: subscribe/fall
