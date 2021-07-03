@@ -25,4 +25,11 @@ public class EventController {
         eventService.sendFall(event);
         return ResponseEntity.ok(event);
     }
+
+    @PostMapping("/event/error")
+    public ResponseEntity<String> error(@RequestBody String chatId){
+        eventService.sendError(chatId);
+        return ResponseEntity.ok(chatId);
+    }
+
 }
