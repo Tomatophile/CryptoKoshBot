@@ -10,6 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.tomatophile.bottemplate.keyboard.ReplyKeyboardMarkupBuilder;
 import org.telegram.tomatophile.bottemplate.processed.command.Command;
 import org.telegram.tomatophile.bottemplate.processed.text.Text;
+import org.telegram.tomatophile.cryptokoshbot.service.ReplyService;
 
 import java.util.List;
 
@@ -22,8 +23,12 @@ public class StartCommand implements Command {
 
     @Value("${telegram.bot.blank.hello}")
     private String hello;
+    @Value("${telegram.bot.stickers.hello}")
+    private String sticker;
 
     private final List<Text> texts;
+
+    private final ReplyService replyService;
 
     @Override
     public List<PartialBotApiMethod<Message>> process(Update update) {
@@ -38,6 +43,8 @@ public class StartCommand implements Command {
             }
             keyboard.nextRow();
         }
+
+        replyService.sendSticker(update.getMessage().getChatId().toString(), sticker);
 
         return List.of(keyboard.build());
     }

@@ -12,7 +12,7 @@ currencyListener:
 
 
 telegram.bot:
-
+  url: https://api.telegram.org/bot
   token: ${BOT_TOKEN}
   username: ${BOT_USERNAME}
 
@@ -31,6 +31,10 @@ telegram.bot:
       iWantToSubscribeOnFall: Узнать, когда курс упадёт!📉
       iWantToSubscribeOnUpdate: Подписатьться на поток обновления курса!🤖
       iWantToUnsubscribeOnUpdate: Отписаться от потока!⛔️
+
+
+  stickers:
+    hello: CAACAgIAAxkBAAIBC2Dgoi-AHePmt-JgxuYsv1oV2h97AAJLDgACU7H3AyMbjeFxIFXgIAQ
 
   blank:
     hello: |
