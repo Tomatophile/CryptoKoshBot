@@ -25,10 +25,10 @@ telegram.bot:
       unsubscribeUpdate: /unsubscribeUpdate
       update: /update
     text:
-      iWantGetOne: Хочу узнать текущий курс!
-      iWantToSubscribeOnFall: Хочу узнать, когда курс упадёт!
-      iWantToSubscribeOnUpdate: Хочу подписатьться на поток обновления курса!
-      iWantToUnsubscribeOnUpdate: Хочу отписаться от потока!
+      iWantGetOne: Узнать текущий курс!
+      iWantToSubscribeOnFall: Узнать, когда курс упадёт!
+      iWantToSubscribeOnUpdate: Подписатьться на поток обновления курса!
+      iWantToUnsubscribeOnUpdate: Отписаться от потока!
 
   blank:
     hello: |
