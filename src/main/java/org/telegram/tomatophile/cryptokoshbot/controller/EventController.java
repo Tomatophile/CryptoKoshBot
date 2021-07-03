@@ -1,6 +1,7 @@
 package org.telegram.tomatophile.cryptokoshbot.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,8 +27,10 @@ public class EventController {
         return ResponseEntity.ok(event);
     }
 
+    @SneakyThrows
     @PostMapping("/event/error")
     public ResponseEntity<String> error(@RequestBody String chatId){
+        Thread.sleep(3000);
         eventService.sendError(chatId);
         return ResponseEntity.ok(chatId);
     }
