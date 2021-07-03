@@ -26,8 +26,8 @@ telegram.bot:
       update: /update
     text:
       iWantGetOne: Узнать текущий курс!🤑
-      iWantToSubscribeOnFall: Узнать, когда курс упадёт!🤖
-      iWantToSubscribeOnUpdate: Подписатьться на поток обновления курса!📉
+      iWantToSubscribeOnFall: Узнать, когда курс упадёт!📉
+      iWantToSubscribeOnUpdate: Подписатьться на поток обновления курса!🤖
       iWantToUnsubscribeOnUpdate: Отписаться от потока!⛔️
 
   blank:
