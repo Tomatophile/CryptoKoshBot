@@ -18,7 +18,12 @@ public class EventService {
     @Value("${telegram.bot.blank.errorEvent}")
     private String errorEvent;
 
+    @Value("${telegram.bot.stickers.success}")
+    private String sticker;
+
     private final CryptoKoshBot cryptoKoshBot;
+
+    private final ReplyService replyService;
 
     @SneakyThrows
     public void sendUpdate(Event event) {
@@ -35,6 +40,7 @@ public class EventService {
         sendMessage.setChatId(event.getChatId());
         sendMessage.setText(String.format(fallEvent, event.getFigi(), event.getPrice()));
 
+        replyService.sendSticker(event.getChatId(), sticker);
         cryptoKoshBot.execute(sendMessage);
     }
 
