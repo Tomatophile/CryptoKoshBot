@@ -38,25 +38,25 @@ public class SubscribeFallCommand implements Command {
     public List<PartialBotApiMethod<Message>> process(Update update) {
         var chatId = update.getMessage().getChatId().toString();
 
-        if(update.getMessage().getText().split(" ").length!=3){
+        if (update.getMessage().getText().split(" ").length != 3) {
             return List.of(replyService.getTextMessage(chatId, unknownFormat));
         }
 
         var figi = update.getMessage().getText().split(" ")[1];
 
-        if(figi.length()>4||figi.length()<1||!figi.matches("[A-Za-z]{1,4}")){
+        if (figi.length() > 4 || figi.length() < 1 || !figi.matches("[A-Za-z]{1,4}")) {
             return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
 
         var percent = update.getMessage().getText().split(" ")[2];
         int fallPercent;
 
-        try{
+        try {
             fallPercent = Integer.parseInt(percent);
-        } catch (Exception e){
+        } catch (Exception e) {
             return List.of(replyService.getTextMessage(chatId, fallPercentError));
         }
-        if(fallPercent>100||fallPercent<0){
+        if (fallPercent > 100 || fallPercent < 0) {
             return List.of(replyService.getTextMessage(chatId, fallPercentError));
         }
 

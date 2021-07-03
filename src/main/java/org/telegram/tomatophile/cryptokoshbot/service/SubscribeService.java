@@ -51,7 +51,7 @@ public class SubscribeService {
         restTemplate.postForObject(url, subscribe, Subscribe.class);
     }
 
-    public ResponseEntity<Event> getOne(String figi){
+    public ResponseEntity<Event> getOne(String figi) {
         var url = currencyListenerUrl.concat(getOneUrl).concat(figi);
 
         return restTemplate.getForEntity(url, Event.class);

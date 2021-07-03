@@ -36,13 +36,13 @@ public class SubscribeUpdateCommand implements Command {
     public List<PartialBotApiMethod<Message>> process(Update update) {
         var chatId = update.getMessage().getChatId().toString();
 
-        if(update.getMessage().getText().split(" ").length!=2){
+        if (update.getMessage().getText().split(" ").length != 2) {
             return List.of(replyService.getTextMessage(chatId, unknownFormat));
         }
 
         var figi = update.getMessage().getText().split(" ")[1];
 
-        if(figi.length()>4||figi.length()<1||!figi.matches("[A-Za-z]{1,4}")){
+        if (figi.length() > 4 || figi.length() < 1 || !figi.matches("[A-Za-z]{1,4}")) {
             return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
 

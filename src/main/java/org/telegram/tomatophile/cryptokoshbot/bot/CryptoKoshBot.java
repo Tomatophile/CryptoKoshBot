@@ -5,7 +5,6 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.tomatophile.bottemplate.AbstractTelegramBot;
 import org.telegram.tomatophile.bottemplate.receiver.UpdateReceiver;
@@ -37,12 +36,10 @@ public class CryptoKoshBot extends AbstractTelegramBot {
     public void onUpdateReceived(Update update) {
         var responseToUser = updateReceiver.receive(update);
 
-        if(!responseToUser.isEmpty()){
+        if (!responseToUser.isEmpty()) {
             for (var send : responseToUser) {
                 if (send instanceof SendMessage) {
                     execute((SendMessage) send);
-                } else if(send instanceof SendPhoto){
-                    execute((SendPhoto) send);
                 }
             }
         } else {

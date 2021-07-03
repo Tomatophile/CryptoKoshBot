@@ -21,7 +21,7 @@ public class EventService {
     private final CryptoKoshBot cryptoKoshBot;
 
     @SneakyThrows
-    public void sendUpdate(Event event){
+    public void sendUpdate(Event event) {
         var sendMessage = new SendMessage();
         sendMessage.setChatId(event.getChatId());
         sendMessage.setText(String.format(updateEvent, event.getFigi(), event.getPrice()));
@@ -30,7 +30,7 @@ public class EventService {
     }
 
     @SneakyThrows
-    public void sendFall(Event event){
+    public void sendFall(Event event) {
         var sendMessage = new SendMessage();
         sendMessage.setChatId(event.getChatId());
         sendMessage.setText(String.format(fallEvent, event.getFigi(), event.getPrice()));

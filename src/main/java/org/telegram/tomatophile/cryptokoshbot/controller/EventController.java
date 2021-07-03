@@ -16,25 +16,25 @@ public class EventController {
     private final EventService eventService;
 
     @PostMapping("/event/update")
-    public ResponseEntity<Event> update(@RequestBody Event event){
+    public ResponseEntity<Event> update(@RequestBody Event event) {
         eventService.sendUpdate(event);
         return ResponseEntity.ok(event);
     }
 
     @PostMapping("/event/fall")
-    public ResponseEntity<Event> fall(@RequestBody Event event){
+    public ResponseEntity<Event> fall(@RequestBody Event event) {
         eventService.sendFall(event);
         return ResponseEntity.ok(event);
     }
 
     @PostMapping("/event/error")
-    public ResponseEntity<String> error(@RequestBody String chatId){
+    public ResponseEntity<String> error(@RequestBody String chatId) {
         eventService.sendError(chatId);
         return ResponseEntity.ok(chatId);
     }
 
     @GetMapping("/event/dontsleep")
-    public ResponseEntity<String> dontSleep(){
+    public ResponseEntity<String> dontSleep() {
         return ResponseEntity.ok("I'm Fine!");
     }
 }

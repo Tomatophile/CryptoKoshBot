@@ -35,13 +35,13 @@ public class UpdateCommand implements Command {
     public List<PartialBotApiMethod<Message>> process(Update update) {
         var chatId = update.getMessage().getChatId().toString();
 
-        if(update.getMessage().getText().split(" ").length!=2){
+        if (update.getMessage().getText().split(" ").length != 2) {
             return List.of(replyService.getTextMessage(chatId, unknownFormat));
         }
 
         var figi = update.getMessage().getText().split(" ")[1];
 
-        if(figi.length()>4||figi.length()<1||!figi.matches("[A-Za-z]{1,4}")){
+        if (figi.length() > 4 || figi.length() < 1 || !figi.matches("[A-Za-z]{1,4}")) {
             return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
 
@@ -50,7 +50,7 @@ public class UpdateCommand implements Command {
             var price = response.getBody().getPrice();
 
             return List.of(replyService.getTextMessage(chatId, String.format(updateEvent, figi, price)));
-        } catch (Exception e){
+        } catch (Exception e) {
             return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
     }
