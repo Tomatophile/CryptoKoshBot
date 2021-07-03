@@ -1,7 +1,78 @@
+server.port: 8082
+
+currencyListener:
+  baseUrl: http://localhost:8081/
+
+
 telegram.bot:
+
   token: 1869011562:AAGTy1hnkUEuT-VvhVjgx-C1YuOSI0Cv8cQ
   username: cryptoKosh_bot
 
-server.port: 8082
+  processed:
+    command:
+      start: /start
+      subscribeFall: /subscribeFall
+      subscribeUpdate: /subscribeUpdate
+      unsubscribeUpdate: /unsubscribeUpdate
+    text:
+      iWantToSubscribeOnFall: Хочу узнать, когда курс упадёт!
+      iWantToSubscribeOnUpdate: Хочу подписатьться на поток обновления курса!
+      iWantToUnsubscribeOnUpdate: Хочу отписаться от потока!
 
-currencyListener.url: http://localhost:8081/
+  blank:
+    hello: |
+      Привет, %s!
+      Меня зовут cryptoKosh_bot.
+      Я бот, который помогает тем, кто хочет знать самую актуальную информацию о курсе криптовалют.
+      Здесь можно оформить подписку на обновления их курса.
+
+    unknownCommand: Прости, я не понимаю тебя, у меня лапки. Пожалуйста воспользуйся командами, которые я уже выучил.
+
+    unknownFormat: Не могу разобрать. Проверь, соответствует ли команда заданному форматую.
+
+    unknownCurrency: В моей базе этой валюты нет. Меня не проведёшь, ты её выдумал!
+
+    fallPercentError: |
+      Хм...
+      Я не смог посчитать такой процент от текущего курса.
+      Проверь, правильно ли ты его ввёл.
+      И не забывай,
+      что он может быть только в диапазоне от 0 до 100 :)
+
+    guideSubscribeFall: |
+      Тогда отправь мне команду:
+      /subscribeFall <код валюты> <процент падения>
+
+      например:
+      /subscribeFall ETH 5
+
+    successSubscribeFall: |
+      Отлично!
+      Теперь осталось только ждать. Как только %s упадёт на %s процентов, я пришлю тебе уведомление.
+
+    guideSubscribeUpdate: |
+      Тогда отправь мне команду:
+      /subscribeUpdate <код валюты>
+
+      например:
+      /subscribeUpdate BTC
+
+    successSubscribeUpdate: |
+      Отлично!
+      Теперь каждые 3 секунды ты будешь получать сообщение с текущим курсом %s.
+
+    guideUnsubscribeUpdate: |
+      Тогда отправь мне команду:
+      /unsubscribeUpdate <код валюты>
+
+      например:
+      /unsubscribeUpdate BTC
+
+    successUnsubscribeUpdate: |
+      Эх...
+      Больше тебе не будут приходить сообщения с курсом %s.
+      Рад был помочь.
+
+    updateEvent: Стоимость %s составляет $%s
+    fallEvent: Стоимость %s упала, и теперь составляет $%s
