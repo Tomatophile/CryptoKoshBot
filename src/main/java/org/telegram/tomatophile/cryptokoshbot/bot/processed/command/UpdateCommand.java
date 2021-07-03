@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UpdateCommand implements Command {
     @Getter
-    @Value("telegram.bot.processed.command.update")
+    @Value("${telegram.bot.processed.command.update}")
     private String command;
 
     @Value("${telegram.bot.blank.unknownFormat}")
