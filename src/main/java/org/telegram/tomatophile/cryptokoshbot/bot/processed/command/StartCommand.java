@@ -5,13 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
-import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.tomatophile.bottemplate.keyboard.ReplyKeyboardMarkupBuilder;
 import org.telegram.tomatophile.bottemplate.processed.command.Command;
 import org.telegram.tomatophile.bottemplate.processed.text.Text;
-import org.telegram.tomatophile.cryptokoshbot.service.ReplyService;
 
 import java.util.List;
 
