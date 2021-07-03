@@ -1,24 +1,16 @@
 server.port: ${PORT}
-#server.port: 8082
 
 currencyListener:
   baseUrl: ${CURRENCY_LISTENER_BASE_URL}
-#  baseUrl: https://curryncy-listener.herokuapp.com/
-#  baseUrl: http://localhost:8081/
   subscribeUpdateUrl: subscribe/update
   unsubscribeUpdateUrl: unsubscribe/update
   subscribeFallUrl: subscribe/fall
   getOneUrl: /get?figi=
 
-
-
 telegram.bot:
   url: https://api.telegram.org/bot
   token: ${BOT_TOKEN}
   username: ${BOT_USERNAME}
-
-#  token: 1869011562:AAGTy1hnkUEuT-VvhVjgx-C1YuOSI0Cv8cQ
-#  username: cryptoKosh_bot
 
   processed:
     command:
@@ -32,7 +24,6 @@ telegram.bot:
       iWantToSubscribeOnFall: Узнать, когда курс упадёт!📉
       iWantToSubscribeOnUpdate: Подписатьться на поток обновления курса!🤖
       iWantToUnsubscribeOnUpdate: Отписаться от потока!⛔️
-
 
   stickers:
     hello: CAACAgIAAxkBAAIBD2DgsYwMx8WD3MjlYyM8eOMEuzmLAAJOEAACdjMJSxeurmtMDFdkIAQ
