@@ -29,7 +29,7 @@ public class ReplyService {
     }
 
     public void sendSticker(String chatId, String fileId){
-        var url = baseUrl.concat(token).concat("/sendticker?").concat("chat_id=").concat(chatId).concat("&sticker=").concat(fileId);
+        var url = baseUrl.concat(token).concat("/sendsticker?").concat("chat_id=").concat(chatId).concat("&sticker=").concat(fileId);
 
         restTemplate.postForLocation(url, HttpEntity.EMPTY);
     }
