@@ -42,7 +42,7 @@ public class SubscribeUpdateCommand implements Command {
 
         var figi = update.getMessage().getText().split(" ")[1];
 
-        if(figi.length()!=3||!figi.matches("[A-Za-z]{3}")){
+        if(figi.length()!=3||!figi.matches("[A-Za-z]{1,4}")){
             return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
 
