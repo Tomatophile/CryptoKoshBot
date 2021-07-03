@@ -30,7 +30,6 @@ public class EventController {
     @SneakyThrows
     @PostMapping("/event/error")
     public ResponseEntity<String> error(@RequestBody String chatId){
-        Thread.sleep(3000);
         eventService.sendError(chatId);
         return ResponseEntity.ok(chatId);
     }
