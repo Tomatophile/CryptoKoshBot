@@ -9,7 +9,7 @@ import java.io.File;
 public class ImageConfig {
     @Bean
     public InputFile image(){
-        var path = getClass().getClassLoader().getResource("img/2.jpg").getPath();
+        var path = getClass().getClassLoader().getResource("img/2.jpg").getPath().replace("!", "");
         return new InputFile(new File(path));
     }
 }
