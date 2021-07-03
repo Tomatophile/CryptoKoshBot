@@ -27,10 +27,6 @@ public class StartCommand implements Command {
 
     private final List<Text> texts;
 
-    private final InputFile image;
-
-    private final ReplyService replyService;
-
     @Override
     public List<PartialBotApiMethod<Message>> process(Update update) {
         var keyboard = ReplyKeyboardMarkupBuilder.create(update.getMessage().getChatId().toString());
@@ -45,6 +41,6 @@ public class StartCommand implements Command {
             keyboard.nextRow();
         }
 
-        return List.of(keyboard.build(), replyService.getPhotoMessage(update.getMessage().getChatId().toString(), image));
+        return List.of(keyboard.build());
     }
 }
