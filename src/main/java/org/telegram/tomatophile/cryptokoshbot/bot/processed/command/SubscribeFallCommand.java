@@ -12,6 +12,7 @@ import org.telegram.tomatophile.cryptokoshbot.service.ReplyService;
 import org.telegram.tomatophile.cryptokoshbot.service.SubscribeService;
 
 import java.util.List;
+import java.util.Locale;
 
 @Component
 @RequiredArgsConstructor
@@ -59,7 +60,7 @@ public class SubscribeFallCommand implements Command {
             return List.of(replyService.getTextMessage(chatId, fallPercentError));
         }
 
-        subscribeService.subscribeOnFallCurrency(chatId, figi, fallPercent);
+        subscribeService.subscribeOnFallCurrency(chatId, figi.toUpperCase(Locale.ROOT), fallPercent);
         return List.of(replyService.getTextMessage(chatId, String.format(successSubscribeFall, figi, fallPercent)));
     }
 }

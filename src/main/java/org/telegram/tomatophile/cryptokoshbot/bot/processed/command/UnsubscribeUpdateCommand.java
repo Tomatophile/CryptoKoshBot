@@ -12,6 +12,7 @@ import org.telegram.tomatophile.cryptokoshbot.service.ReplyService;
 import org.telegram.tomatophile.cryptokoshbot.service.SubscribeService;
 
 import java.util.List;
+import java.util.Locale;
 
 @Component
 @RequiredArgsConstructor
@@ -45,7 +46,7 @@ public class UnsubscribeUpdateCommand implements Command {
             return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
 
-        subscribeService.unsubscribeOnUpdateCurrency(chatId, figi);
+        subscribeService.unsubscribeOnUpdateCurrency(chatId, figi.toUpperCase(Locale.ROOT));
         return List.of(replyService.getTextMessage(chatId, String.format(successUnsubscribeUpdate, figi)));
     }
 }
