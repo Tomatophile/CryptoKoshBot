@@ -2,6 +2,10 @@ server.port: 8082
 
 currencyListener:
   baseUrl: http://localhost:8081/
+  subscribeUpdateUrl: subscribe/update
+  unsubscribeUpdateUrl: unsubscribe/update
+  subscribeFallUrl: subscribe/fall
+
 
 
 telegram.bot:
