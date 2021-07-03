@@ -23,6 +23,7 @@ telegram.bot:
       subscribeFall: /subscribeFall
       subscribeUpdate: /subscribeUpdate
       unsubscribeUpdate: /unsubscribeUpdate
+      update: /update
     text:
       iWantGetOne: Хочу узнать текущий курс!
       iWantToSubscribeOnFall: Хочу узнать, когда курс упадёт!
