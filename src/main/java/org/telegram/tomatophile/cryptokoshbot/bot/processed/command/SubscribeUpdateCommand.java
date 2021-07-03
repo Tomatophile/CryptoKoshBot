@@ -28,6 +28,9 @@ public class SubscribeUpdateCommand implements Command {
     @Value("${telegram.bot.blank.successSubscribeUpdate}")
     private String successSubscribeUpdate;
 
+    @Value("${telegram.bot.stickers.success}")
+    private String sticker;
+
     private final ReplyService replyService;
 
     private final SubscribeService subscribeService;
@@ -47,6 +50,7 @@ public class SubscribeUpdateCommand implements Command {
         }
 
         subscribeService.subscribeOnUpdateCurrency(chatId, figi.toUpperCase(Locale.ROOT));
+        replyService.sendSticker(chatId, sticker);
         return List.of(replyService.getTextMessage(chatId, String.format(successSubscribeUpdate, figi)));
     }
 }

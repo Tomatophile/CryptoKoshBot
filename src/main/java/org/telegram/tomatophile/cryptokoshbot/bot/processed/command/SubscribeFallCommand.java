@@ -30,6 +30,9 @@ public class SubscribeFallCommand implements Command {
     @Value("${telegram.bot.blank.successSubscribeFall}")
     private String successSubscribeFall;
 
+    @Value("${telegram.bot.stickers.success}")
+    private String sticker;
+
     private final ReplyService replyService;
 
     private final SubscribeService subscribeService;
@@ -61,6 +64,7 @@ public class SubscribeFallCommand implements Command {
         }
 
         subscribeService.subscribeOnFallCurrency(chatId, figi.toUpperCase(Locale.ROOT), fallPercent);
+        replyService.sendSticker(chatId, sticker);
         return List.of(replyService.getTextMessage(chatId, String.format(successSubscribeFall, figi, fallPercent)));
     }
 }

@@ -34,7 +34,8 @@ telegram.bot:
 
 
   stickers:
-    hello: CAACAgIAAxkBAAIBC2Dgoi-AHePmt-JgxuYsv1oV2h97AAJLDgACU7H3AyMbjeFxIFXgIAQ
+    hello: CAACAgIAAxkBAAIBD2DgsYwMx8WD3MjlYyM8eOMEuzmLAAJOEAACdjMJSxeurmtMDFdkIAQ
+    success: CAACAgIAAxkBAAIBEGDgsekgyXjJ3JaoXsxTzqF8_c39AALNDwACmxYJS3JAE09sazHFIAQ
 
   blank:
     hello: |
