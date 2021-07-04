@@ -43,7 +43,7 @@ public class SubscribeService {
         return restTemplate.postForEntity(url, subscribe, Subscribe.class);
     }
 
-    public void subscribeOnFallCurrency(String chatId, String figi, int fallPercent) {
+    public void subscribeOnFallCurrency(String chatId, String figi, Double fallPercent) {
         var url = currencyListenerUrl.concat(subscribeFallUrl);
 
         var subscribe = Subscribe.builder().chatId(chatId).figi(figi).fallPercent(fallPercent).build();

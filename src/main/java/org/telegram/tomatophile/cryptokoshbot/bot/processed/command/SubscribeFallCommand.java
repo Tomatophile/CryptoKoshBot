@@ -52,10 +52,10 @@ public class SubscribeFallCommand implements Command {
         }
 
         var percent = update.getMessage().getText().split(" ")[2];
-        int fallPercent;
+        double fallPercent;
 
         try {
-            fallPercent = Integer.parseInt(percent);
+            fallPercent = Double.parseDouble(percent);
         } catch (Exception e) {
             return List.of(replyService.getTextMessage(chatId, fallPercentError));
         }
