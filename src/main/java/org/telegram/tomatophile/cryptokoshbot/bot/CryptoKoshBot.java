@@ -21,6 +21,9 @@ public class CryptoKoshBot extends AbstractTelegramBot {
     @Value("${telegram.bot.blank.unknownCommand}")
     private String unknownCommand;
 
+    @Value("${telegram.bot.stickers.clError}")
+    private String sticker;
+
     private final ReplyService replyService;
 
     private final UpdateReceiver updateReceiver;
@@ -43,6 +46,7 @@ public class CryptoKoshBot extends AbstractTelegramBot {
                 }
             }
         } else {
+            replyService.sendSticker(update.getMessage().getChatId().toString(), sticker);
             execute(replyService.getTextMessage(update.getMessage().getChatId().toString(), unknownCommand));
         }
     }

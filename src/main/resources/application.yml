@@ -28,6 +28,8 @@ telegram.bot:
   stickers:
     hello: CAACAgIAAxkBAAIBD2DgsYwMx8WD3MjlYyM8eOMEuzmLAAJOEAACdjMJSxeurmtMDFdkIAQ
     success: CAACAgIAAxkBAAIBEGDgsekgyXjJ3JaoXsxTzqF8_c39AALNDwACmxYJS3JAE09sazHFIAQ
+    clError: CAACAgIAAxkBAAIBEWDhYB9miw0gtZln4H5qhiIM6rJLAALlDQACa48IS1-jsksGqjQ0IAQ
+    srError: CAACAgIAAxkBAAIBEmDhYXhixWbtI-eW02Jkcspl5KBvAAK6CwAC57QIS9FE9dc07ByPIAQ
 
   blank:
     hello: |
@@ -60,7 +62,7 @@ telegram.bot:
       /subscribeFall <код валюты> <процент падения>
 
       например:
-      /subscribeFall ETH 5
+      /subscribeFall ETH 5.15
 
     successSubscribeFall: |
       Отлично!
