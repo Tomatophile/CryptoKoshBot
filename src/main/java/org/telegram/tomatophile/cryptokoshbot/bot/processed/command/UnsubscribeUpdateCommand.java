@@ -30,6 +30,9 @@ public class UnsubscribeUpdateCommand implements Command {
     @Value("${telegram.bot.blank.errorUnsubscribeUpdate}")
     private String errorUnsubscribeUpdate;
 
+    @Value("${telegram.bot.stickers.success}")
+    private String sticker;
+
     private final ReplyService replyService;
 
     private final SubscribeService subscribeService;
@@ -52,6 +55,7 @@ public class UnsubscribeUpdateCommand implements Command {
             subscribeService.unsubscribeOnUpdateCurrency(chatId, figi.toUpperCase(Locale.ROOT));
             return List.of(replyService.getTextMessage(chatId, String.format(successUnsubscribeUpdate, figi)));
         } catch (Exception e){
+            replyService.sendSticker(chatId, sticker);
             return List.of(replyService.getTextMessage(chatId, errorUnsubscribeUpdate));
         }
     }

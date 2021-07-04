@@ -28,7 +28,9 @@ public class UpdateCommand implements Command {
     private String updateEvent;
 
     @Value("${telegram.bot.stickers.success}")
-    private String sticker;
+    private String successSticker;
+    @Value("${telegram.bot.stickers.success}")
+    private String errorSticker;
 
     private final ReplyService replyService;
 
@@ -52,9 +54,10 @@ public class UpdateCommand implements Command {
             var response = subscribeService.getOne(figi);
             var price = response.getBody().getPrice();
 
-            replyService.sendSticker(chatId, sticker);
+            replyService.sendSticker(chatId, successSticker);
             return List.of(replyService.getTextMessage(chatId, String.format(updateEvent, figi, price)));
         } catch (Exception e) {
+            replyService.sendSticker(chatId, errorSticker);
             return List.of(replyService.getTextMessage(chatId, unknownCurrency));
         }
     }
